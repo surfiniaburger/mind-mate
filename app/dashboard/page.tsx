@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 
@@ -41,12 +42,12 @@ export default function App() {
 
       // Initialize toneRecommendations
       const toneRecommendations: ToneRecommendations = {
-        angry: ['Link 1', 'Link 2', 'Link 3'],
-        sad: ['Link 4', 'Link 5', 'Link 6'],
-        worried: ['Link 7', 'Link 8', 'Link 9'],
-        confused: ['Link 10', 'Link 11', 'Link 12'],
-        disappointed: ['Link 13', 'Link 14', 'Link 15'],
-        repulsed: ['Link 16', 'Link 17', 'Link 18'],
+        angry: ['https://www.crossway.org/articles/11-passages-to-read-to-help-fight-anger/', 'https://store.faithlafayette.org/browse-by-topic/christian-life-and-growth/emotions-feelings/good-angry/', 'https://www.madebyteachers.com/products/when-sophie-gets-angry-really-really-angry-reading-resources-lessons/'],
+        sad: ['https://priyaghose.io/2020-09-19-recommended-reading-when-youre-feeling-sad/', 'https://www.weareteachers.com/books-about-sadness/', 'https://www.betterhealth.vic.gov.au/health/healthyliving/its-okay-to-feel-sad'],
+        worried: ['https://www.pegasus.health.nz/your-health/useful-links-resources/reading-in-mind/mental-health-books/anxiety-stress-worry/', 'https://www.robertmellors.notts.sch.uk/wp-content/uploads/sites/3/2020/04/Anxiety-Resource-Pack-2.pdf', 'https://www.cci.health.wa.gov.au/Resources/Looking-After-Yourself/Worry-and-Rumination'],
+        confused: ['https://theaggie.org/2023/10/06/are-you-a-twenty-something-like-me-and-confused-about-everything-i-recommend-reading-some-nonfiction/', 'https://www.getepic.com/in/book/59922898/what-i-look-like-when-i-am-confused', 'https://www.commonlit.org/en/texts/the-value-of-being-confused'],
+        disappointed: ['https://www.betterup.com/blog/disappointment', 'https://hbr.org/2018/08/dealing-with-disappointment', 'https://www.cbsnews.com/news/books-overcoming-disappointments/'],
+        repulsed: ['https://www.goodtherapy.org/blog/disgusted-with-violence-0110121/', 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5426557/', 'https://www.amazon.com/Disgusted-Learning-about-Emotions-Gaertner/dp/1503828077'],
         };
       // Ensure data and overall exist before accessing
       const firstResult: keyof ToneRecommendations = data?.overall?.[0]?.[1] || '';
@@ -99,7 +100,6 @@ export default function App() {
       <h1 className="text-3xl font-bold text-center mb-8">Welcome Back!</h1>
       <div className="py-2 px-4 " >
           <Image src="/fresh.png" alt={'Fresh tomato Logo'} width={80} height={80} />
-          
         </div>
       <form onSubmit={handleSubmit} className="text-center">
         <textarea
@@ -120,7 +120,13 @@ export default function App() {
               <h4 className="mb-4">Here are some helpful tips:</h4>
               <ul className="list-disc pl-4">
                 {recommendations.map((recommendation, index) => (
-                  <li key={index}>{recommendation}</li>
+                  <li key={index}>
+                    <Link href={recommendation} target="_blank" rel="noopener noreferrer">
+
+                    {recommendation}
+
+                    </Link>
+                    </li>
                 ))}
               </ul>
             </div>
