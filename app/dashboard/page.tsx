@@ -104,7 +104,7 @@ export default function App() {
           style={{ width: '100%', height: '100px', marginBottom: '10px' }}
         />
         <br />
-        <button type="submit">Analyze Tone</button>
+        <button type="submit">Send</button>
       </form>
       {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
       {toneLabel && (
