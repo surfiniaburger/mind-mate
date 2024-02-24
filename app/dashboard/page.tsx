@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import axios from 'axios';
+import Image from 'next/image'
 
 
 
@@ -94,27 +95,30 @@ export default function App() {
   };
 
   return (
-    <div style={{ textAlign: 'center', margin: '20px' }}>
-      <h1>Sapling Tone Analyzer</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="container mx-auto p-8">
+      <h1 className="text-3xl font-bold text-center mb-8">Welcome Back!</h1>
+      <div className="py-2 px-4 " >
+          <Image src="/fresh.png" alt={'Fresh tomato Logo'} width={80} height={80} />
+          
+        </div>
+      <form onSubmit={handleSubmit} className="text-center">
         <textarea
           value={inputText}
           onChange={handleInputChange}
           placeholder="Enter text here..."
-          style={{ width: '100%', height: '100px', marginBottom: '10px' }}
+          className="w-full h-32 border border-gray-300 rounded-md px-4 py-2 mb-4"
         />
         <br />
-        <button type="submit">Send</button>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Send</button>
       </form>
-      {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
+      {error && <div className="text-red-500 mt-4">{error}</div>}
       {toneLabel && (
-        <div style={{ marginTop: '20px', border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
-          <h3>Tone Analysis Result:</h3>
-          <p>The tone of the input text is: <strong>{toneLabel}</strong></p>
+        <div className="mt-8 border border-gray-300 rounded-md p-4">
+          <p className="mb-4">It seems like you are feeling  <strong>{toneLabel}</strong>.</p>
           {recommendations.length > 0 && (
             <div>
-              <h4>Recommendations:</h4>
-              <ul>
+              <h4 className="mb-4">Here are some helpful tips:</h4>
+              <ul className="list-disc pl-4">
                 {recommendations.map((recommendation, index) => (
                   <li key={index}>{recommendation}</li>
                 ))}
